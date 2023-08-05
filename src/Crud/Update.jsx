@@ -30,11 +30,6 @@ function Update() {
         }
         upd()
         navigate("/")
-
-
-
-
-
     }
 
     return (
