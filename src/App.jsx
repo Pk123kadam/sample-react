@@ -16,6 +16,9 @@ import Crud from "./Crud/Crud";
 import Add from "./Crud/Add";
 import Update from "./Crud/Update";
 import Todo from "./todo/Todo";
+import Formik from "./formik and yup/Formikk";
+import Formikk from "./formik and yup/Formikk";
+import Display from "./formik and yup/Display";
 
 
 function App() {
@@ -60,7 +63,17 @@ function App() {
       {/* <Suspense fallback={<div>loading....</div>}>
         <Lazycomponent></Lazycomponent>
       </Suspense> */}
-      <Todo></Todo>
+      {/* <Todo></Todo> */}
+
+
+      {/* formik */}
+      <Formikk> </Formikk>
+
+
+
+
+
+
 
 
     </>
