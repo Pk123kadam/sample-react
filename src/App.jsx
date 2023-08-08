@@ -19,6 +19,9 @@ import Todo from "./todo/Todo";
 import Formik from "./formik and yup/Formikk";
 import Formikk from "./formik and yup/Formikk";
 import Display from "./formik and yup/Display";
+import Page from "./module css/Page";
+import Homes from "./module css/Homes";
+import Useform from "./use form/Useform";
 
 
 function App() {
@@ -31,7 +34,7 @@ function App() {
     <>
       {/* <Counter></Counter> */}
 
-      {/* <Stopwatch></Stopwatch>  */}
+      {/* <Stopwatch></Stopwatch> */}
       {/* <Event></Event> */}
       {/* <Toggle></Toggle> */}
       {/* <Ref></Ref> */}
@@ -67,7 +70,12 @@ function App() {
 
 
       {/* formik */}
-      <Formikk> </Formikk>
+      {/* <Formikk> </Formikk> */}
+      {/* module */}
+      {/* <Page></Page>
+      <Homes></Homes> */}
+      <Useform></Useform>
+
 
 
 

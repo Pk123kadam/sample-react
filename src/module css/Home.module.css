@@ -1,0 +1,7 @@
+.orange {
+    background-color: orange;
+}
+
+.orange:hover {
+    background-color: red;
+}
