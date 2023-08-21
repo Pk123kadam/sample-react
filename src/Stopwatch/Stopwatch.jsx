@@ -11,13 +11,13 @@ function Stopwatch() {
     if (start) {
       interval = setInterval(() => {
         Setcount(count + 1);
-      }, 1000  );
+      }, 1000);
 
       if (count > 59) {
         Setmin(min + 1);
         Setcount(0);
       }
-      if (min > 59  ) {
+      if (min > 59) {
         Sethr(hr + 1);
         Setmin(0);
       }
@@ -41,9 +41,9 @@ function Stopwatch() {
         onClick={() => {
           Setcount(0);
           Setmin(0);
-          Sethr (0);
+          Sethr(0);
           if (start) {
-            Setstart(!start); 
+            Setstart(!start);
           }
         }}
       >

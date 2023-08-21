@@ -28,6 +28,7 @@ import Clean from "./clean/Clean";
 import Error from "./error boundary/Error";
 import ErrorBoundary from "./error boundary/ErrorBoundary";
 import Child from "./child to parent/Child";
+import Parent from "./use memo use callback/Parent";
 
 
 
@@ -101,6 +102,9 @@ function App() {
         <Error message={""}></Error>
       </ErrorBoundary> */}
       {/* <Child></Child> */}
+
+
+      <Parent></Parent>
 
 
 
