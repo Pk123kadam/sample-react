@@ -22,6 +22,13 @@ import Display from "./formik and yup/Display";
 import Page from "./module css/Page";
 import Homes from "./module css/Homes";
 import Useform from "./use form/Useform";
+import RouteNav from "./routing/RouteNav";
+import Comp1 from "./routing/Comp1";
+import Clean from "./clean/Clean";
+import Error from "./error boundary/Error";
+import ErrorBoundary from "./error boundary/ErrorBoundary";
+import Child from "./child to parent/Child";
+
 
 
 function App() {
@@ -30,6 +37,9 @@ function App() {
   const Home = React.lazy(() => import("./login form/Home"))
   const Login = React.lazy(() => import("./login form/Login"))
   const Dash = React.lazy(() => import("./login form/Dashboard"))
+
+
+
   return (
     <>
       {/* <Counter></Counter> */}
@@ -74,7 +84,25 @@ function App() {
       {/* module */}
       {/* <Page></Page>
       <Homes></Homes> */}
-      <Useform></Useform>
+      {/* <Useform></Useform> */}
+
+
+      {/* <BrowserRouter>
+        <RouteNav></RouteNav>
+        <Routes>
+          <Route path="/" element={<Comp1></Comp1>} />
+            <Route path="/" element={<Comp1></Comp1>} />
+            <Route path="/" element={<Comp1></Comp1>} />
+
+        </Routes>
+      </BrowserRouter> */}
+      {/* <Clean></Clean> */}
+      {/* <ErrorBoundary>
+        <Error message={""}></Error>
+      </ErrorBoundary> */}
+      {/* <Child></Child> */}
+
+
 
 
 
