@@ -29,6 +29,7 @@ import Error from "./error boundary/Error";
 import ErrorBoundary from "./error boundary/ErrorBoundary";
 import Child from "./child to parent/Child";
 import Parent from "./use memo use callback/Parent";
+import Reducer from "./reducer/Reducer";
 
 
 
@@ -104,7 +105,8 @@ function App() {
       {/* <Child></Child> */}
 
 
-      <Parent></Parent>
+      {/* <Parent></Parent> */}
+      <Reducer></Reducer>
 
 
 

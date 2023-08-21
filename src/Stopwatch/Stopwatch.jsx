@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./Stopwatch.css"
 
 function Stopwatch() {
   const [start, Setstart] = useState(false);
@@ -29,7 +30,7 @@ function Stopwatch() {
   }, [start, count, hr, min]);
   return (
     <div>
-      <button
+      <button className="btn btn-primary"
         onClick={() => {
           Setstart(!start);
         }}
@@ -37,7 +38,7 @@ function Stopwatch() {
         {start ? "stop" : "start"}
       </button>
       {hr > 9 ? hr : "0" + hr}: {min > 9 ? min : "0" + min}: {count > 9 ? count : "0" + count}
-      <button
+      <button className="btn btn-danger"
         onClick={() => {
           Setcount(0);
           Setmin(0);
