@@ -30,6 +30,8 @@ import ErrorBoundary from "./error boundary/ErrorBoundary";
 import Child from "./child to parent/Child";
 import Parent from "./use memo use callback/Parent";
 import Reducer from "./reducer/Reducer";
+import Custom from "./custom hooks/Home";
+
 
 
 
@@ -106,7 +108,9 @@ function App() {
 
 
       {/* <Parent></Parent> */}
-      <Reducer></Reducer>
+      {/* <Reducer></Reducer> */}
+      {/* <Custom></Custom> */}
+
 
 
 
