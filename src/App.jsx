@@ -35,6 +35,7 @@ import CustomButton from "./mui/components/customButton";
 import Privateroute from "./Route/Privateroute";
 import Example from "./Route/Example";
 import Loginn from "./Route/Login";
+import Sample from "./Form/Sample";
 
 
 
@@ -117,7 +118,7 @@ function App() {
       {/* <Custom></Custom> */}
 
       {/* <CustomButton>this is a custom button</CustomButton> */}
-      <BrowserRouter>
+      {/* <BrowserRouter>
 
         <Routes>
           <Route path="/home" element={
@@ -130,19 +131,8 @@ function App() {
           </Route>
           <Route path="/login" element={<Loginn ></Loginn>}></Route>
         </Routes>
-      </BrowserRouter>
-
-
-
-
-
-
-
-
-
-
-
-
+      </BrowserRouter> */}
+      <Sample></Sample>
     </>
   );
 }
