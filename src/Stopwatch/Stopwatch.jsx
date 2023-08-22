@@ -50,6 +50,7 @@ function Stopwatch() {
       >
         Reset
       </button>
+
     </div>
   );
 }

@@ -31,12 +31,17 @@ import Child from "./child to parent/Child";
 import Parent from "./use memo use callback/Parent";
 import Reducer from "./reducer/Reducer";
 import Custom from "./custom hooks/Home";
+import CustomButton from "./mui/components/customButton";
+import Privateroute from "./Route/Privateroute";
+import Example from "./Route/Example";
+import Loginn from "./Route/Login";
 
 
 
 
 function App() {
   const [state, setstate] = useState(false)
+
   // const Lazycomponent = React.lazy(() => import("./lazy loader/Lazy"))
   const Home = React.lazy(() => import("./login form/Home"))
   const Login = React.lazy(() => import("./login form/Login"))
@@ -110,6 +115,22 @@ function App() {
       {/* <Parent></Parent> */}
       {/* <Reducer></Reducer> */}
       {/* <Custom></Custom> */}
+
+      {/* <CustomButton>this is a custom button</CustomButton> */}
+      <BrowserRouter>
+
+        <Routes>
+          <Route path="/home" element={
+            <Privateroute >
+              <Example></Example>
+
+            </Privateroute>
+          }>
+
+          </Route>
+          <Route path="/login" element={<Loginn ></Loginn>}></Route>
+        </Routes>
+      </BrowserRouter>
 
 
 

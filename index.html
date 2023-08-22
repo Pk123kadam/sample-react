@@ -25,5 +25,42 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // let num = 4 
+      // let prime = true
+      // if(num == 1){
+      //   console.log("not a prime number")
+      // }else if(num > 1){
+      //   for(let i = 2;i<num;i++){
+        
+      //     if(num%i == 0){
+      //      prime = false
+      //       break;
+      //     }else{
+      //       prime = true
+      //     }
+      //   }
+      //   if(prime){
+      //     console.log("its a prime number")
+      //   }else{
+      //     console.log("not a prime number")
+      //   }
+      // }
+
+      let name = "my name is rohan name is sadasd"
+      let arr = name.split("").filter((e)=> e!== " ")
+      let obj = {}
+      for(let i = 0;i<=arr.length;i++){
+        if(obj[arr[i]]){
+         obj[arr[i]] =  obj[arr[i]] + 1
+        }else{
+          obj[arr[i]] = 1
+        }
+
+      }
+      console.log(obj)
+   
+      
+    </script>
   </body>
 </html>
