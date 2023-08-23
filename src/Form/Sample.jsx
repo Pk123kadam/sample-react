@@ -26,20 +26,9 @@ function Sample() {
     }
     console.log(obj)
 
-    const initialValues = {
 
-        firstName: "",
-        lastName: "",
-        email: "",
-    }
 
-    const modifi = {
-        firstName: obj.firstName,
-        lastName: obj.lastName,
-        email: obj.email
-    }
 
-    console.log(modifi)
 
     return (
         <>
@@ -52,9 +41,14 @@ function Sample() {
                 //         email: "",
                 //     }}
                 // initialValues={Object.keys(obj).length === 0 ? initialValues : modifi}
-                initialValues={Object.keys(obj).length === 0 ? initialValues : modifi}
+                initialValues={Object.keys(obj).length === 0 ? {
+                    firstName: "",
+                    lastName: "",
+                    email: ""
+                } : obj}
                 validationSchema={SignupSchema}
                 onSubmit={(values, action) => {
+                    // console.log(values)
                     // same shape as initial values
                     Setdata([...data, values])
                     action.resetForm()

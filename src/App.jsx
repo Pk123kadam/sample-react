@@ -38,6 +38,7 @@ import Loginn from "./Route/Login";
 import Sample from "./Form/Sample";
 import Click from "./hoc/Click";
 import Hover from "./hoc/Hover";
+import Pagination from "./Pagination/Pagination";
 
 
 
@@ -134,9 +135,10 @@ function App() {
           <Route path="/login" element={<Loginn ></Loginn>}></Route>
         </Routes>
       </BrowserRouter> */}
-      {/* <Sample></Sample> */}
-      <Click></Click>
-      <Hover></Hover>
+      <Sample></Sample>
+      {/* <Click></Click>
+      <Hover></Hover> */}
+      <Pagination></Pagination>
     </>
   );
 }
