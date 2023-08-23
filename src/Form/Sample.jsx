@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup';
 
 function Sample() {
     const [data, Setdata] = useState([])
+    const [bool, setbool] = useState(false)
+    const [obj, setobj] = useState({})
+
 
     const SignupSchema = Yup.object().shape({
         firstName: Yup.string()
@@ -21,15 +24,35 @@ function Sample() {
         let del = data.filter((_, index) => i != index)
         Setdata(del)
     }
+    console.log(obj)
+
+    const initialValues = {
+
+        firstName: "",
+        lastName: "",
+        email: "",
+    }
+
+    const modifi = {
+        firstName: obj.firstName,
+        lastName: obj.lastName,
+        email: obj.email
+    }
+
+    console.log(modifi)
 
     return (
         <>
             <Formik
-                initialValues={{
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                }}
+                // initialValues={
+
+                //     {
+                //         firstName: "",
+                //         lastName: "",
+                //         email: "",
+                //     }}
+                // initialValues={Object.keys(obj).length === 0 ? initialValues : modifi}
+                initialValues={Object.keys(obj).length === 0 ? initialValues : modifi}
                 validationSchema={SignupSchema}
                 onSubmit={(values, action) => {
                     // same shape as initial values
@@ -54,10 +77,10 @@ function Sample() {
                         email:
                         <Field name="email" type="email" />
                         {errors.email && touched.email ? <div className='text-danger'>{errors.email}</div> : null}
-                        <button type="submit" className='btn btn-primary'>Add</button>
+                        <button type="submit" className='btn btn-primary'>{bool ? "Update" : "Add"}</button>
                     </Form>
                 )}
-            </Formik>
+            </Formik >
 
             <table class="table">
                 <thead>
@@ -79,7 +102,10 @@ function Sample() {
                                 <td>{e.email}</td>
 
 
-
+                                <th><button className='btn btn-primary' onClick={() => {
+                                    setbool(!bool)
+                                    setobj(e)
+                                }} disabled={bool}>Update</button></th>
                                 <th><button className='btn btn-danger' onClick={() => handledelete(i)}>Delete</button></th>
 
                             </tr>

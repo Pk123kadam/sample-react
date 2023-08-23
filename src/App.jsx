@@ -36,6 +36,8 @@ import Privateroute from "./Route/Privateroute";
 import Example from "./Route/Example";
 import Loginn from "./Route/Login";
 import Sample from "./Form/Sample";
+import Click from "./hoc/Click";
+import Hover from "./hoc/Hover";
 
 
 
@@ -132,7 +134,9 @@ function App() {
           <Route path="/login" element={<Loginn ></Loginn>}></Route>
         </Routes>
       </BrowserRouter> */}
-      <Sample></Sample>
+      {/* <Sample></Sample> */}
+      <Click></Click>
+      <Hover></Hover>
     </>
   );
 }
