@@ -73,8 +73,6 @@ function Formikk() {
                     // same shape as initial values
                     console.log(values);
                     action.resetForm()
-
-
                 }}>
 
                 {({ errors, touched }) => (

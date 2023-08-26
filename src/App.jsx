@@ -138,7 +138,7 @@ function App() {
       <Sample></Sample>
       {/* <Click></Click>
       <Hover></Hover> */}
-      <Pagination></Pagination>
+      {/* <Pagination></Pagination> */}
     </>
   );
 }

@@ -6,9 +6,6 @@ function Click({ data, func }) {
         <div>
             this is click component.
             <button onClick={() => func()}>Click{data}</button>
-
-
-
         </div>
     )
 }
