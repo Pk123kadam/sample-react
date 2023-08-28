@@ -39,6 +39,10 @@ import Sample from "./Form/Sample";
 import Click from "./hoc/Click";
 import Hover from "./hoc/Hover";
 import Pagination from "./Pagination/Pagination";
+import Form from "./redux/Form";
+import Formm from "./redux/Form";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 
 
@@ -135,10 +139,11 @@ function App() {
           <Route path="/login" element={<Loginn ></Loginn>}></Route>
         </Routes>
       </BrowserRouter> */}
-      <Sample></Sample>
+      {/* <Sample></Sample> */}
       {/* <Click></Click>
       <Hover></Hover> */}
       {/* <Pagination></Pagination> */}
+      <Provider store={store}><Formm></Formm></Provider>
     </>
   );
 }
