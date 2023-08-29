@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addform, delform, getform } from './FormReducer';
+import { addform, delform, getform, updform } from './FormReducer';
 import Loader from './Loader';
+import { useRef } from 'react';
+import { current } from '@reduxjs/toolkit';
 
 
 function Formm() {
+    const ref = useRef()
     const dispatch = useDispatch()
     const [bool, setbool] = useState(false)
+    const [obj, setobj] = useState({})
+    const [id, setid] = useState(0)
     const { form, load } = useSelector(state => state.form)
     console.log(form)
     const SignupSchema = Yup.object().shape({
@@ -28,75 +33,100 @@ function Formm() {
     }
     useEffect(() => {
         dispatch(getform())
-    }, [])
+    }, [obj])
+    let modify = {
+        name: obj.name,
+        email: obj.email,
+        phone: obj.phone
+    }
+    let initial = {
+        name: "",
+        email: "",
+        phone: ""
+    }
+    console.log(modify)
+    console.log(Object.keys(obj).length)
+    // console.log(ref.current.innerText)
+
     return (
         <>
-            {load ? <Loader></Loader> : <div>
-                <Formik
-                    initialValues={{
-                        name: '',
-                        email: '',
-                        phone: ''
+            <div>
+                {load ? <Loader></Loader> : <div>
+                    <Formik
+                        initialValues={
+                            Object.keys(obj).length === 0 ? initial : modify
+                        }
+                        validationSchema={SignupSchema}
+                        onSubmit={(values, action) => {
+                            // same shape as initial values
+                            console.log(values);
+
+                            if (ref.current.innerText == "Update") {
+                                console.log("hiii")
+                                dispatch(updform({ id: id, data: values }))
+                                setbool(!bool)
+                                setobj({})
+                            } else {
+                                dispatch(addform(values))
+
+                            }
+                            action.resetForm()
+
+                        }}
+                    >
+                        {({ errors, touched }) => (
+                            <Form>
+                                <label>Name</label>
+                                <Field name="name" />
+                                {errors.name && touched.name ? (
+                                    <div>{errors.name}</div>
+                                ) : null}
+                                <label>Email</label>
+                                <Field name="email" type="email" />
+                                {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                                <label>Phone</label>
+                                <Field name="phone" />
+                                {errors.phone && touched.phone ? (
+                                    <div>{errors.phone}</div>
+                                ) : null}
+                                <button ref={ref} type="submit" className='btn btn-primary ms-2'>{bool ? "Update" : "Add"}</button>
+                            </Form>
+                        )}
+                    </Formik>
+                    <table class="table">
+                        <thead>
+                            <tr>
+
+                                <th scope="col">FirstName</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {form.map((item, index) => {
+                                return <>
+                                    <tr key={index + 1}>
+                                        <td>{item.name}</td>
+                                        <td>{item.email}</td>
+                                        <td>{item.phone}</td>
+                                        <td><button className='btn btn-danger' onClick={() => handledel(item.id)} disabled={bool}>Delete</button></td>
+                                        <td><button disabled={bool} className="btn btn-primary" onClick={() => {
+                                            setbool(!bool)
+                                            setobj(item)
+                                            setid(item.id)
+                                        }}>Update</button></td>
+                                    </tr>
+
+                                </>
+                            })}
+
+                        </tbody>
+                    </table>
 
 
-                    }}
-                    validationSchema={SignupSchema}
-                    onSubmit={(values, action) => {
-                        // same shape as initial values
-                        console.log(values);
-                        dispatch(addform(values))
-                        action.resetForm()
-
-                    }}
-                >
-                    {({ errors, touched }) => (
-                        <Form>
-                            <label>Name</label>
-                            <Field name="name" />
-                            {errors.name && touched.name ? (
-                                <div>{errors.name}</div>
-                            ) : null}
-                            <label>Email</label>
-                            <Field name="email" type="email" />
-                            {errors.email && touched.email ? <div>{errors.email}</div> : null}
-                            <label>Phone</label>
-                            <Field name="phone" />
-                            {errors.phone && touched.phone ? (
-                                <div>{errors.phone}</div>
-                            ) : null}
-                            <button type="submit" className='btn btn-primary ms-2'>{bool ? "Update" : "Add"}</button>
-                        </Form>
-                    )}
-                </Formik>
-                <table class="table">
-                    <thead>
-                        <tr>
-
-                            <th scope="col">FirstName</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {form.map((item, index) => {
-                            return <>
-                                <tr key={index + 1}>
-                                    <td>{item.name}</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.phone}</td>
-                                    <td><button className='btn btn-danger' onClick={() => handledel(item.id)}>Delete</button></td>
-                                    <td><button className='btn btn-danger' onClick={() => { setbool(!bool) }}>Update</button></td>
-                                </tr>
-
-                            </>
-                        })}
-
-                    </tbody>
-                </table>
-
-
-            </div>}
+                </div>}
+            </div>
         </>
     )
 }

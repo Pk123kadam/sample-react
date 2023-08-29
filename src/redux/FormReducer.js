@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const formSlice = createSlice({
-  name: 'counter',
+  name: 'form',
   initialState,
   reducers: {
   },
@@ -24,6 +24,14 @@ export const formSlice = createSlice({
 
     }).addCase(getform.fulfilled, (state, action) => {
       state.form = action.payload
+      state.load = false
+
+
+    }).addCase(updform.fulfilled, (state, action) => {
+      let obj = state.form.find((e) => e.id == action.payload.id)
+      obj.name = action.payload.data.name,
+        obj.email = action.payload.data.email,
+        obj.phone = action.payload.data.phone
       state.load = false
 
 
@@ -56,6 +64,14 @@ export const formSlice = createSlice({
       })
       .addCase(getform.rejected, (state, action) => {
         state.load = false
+      }).addCase(updform.pending, (state, action) => {
+
+        state.load = true
+
+
+      })
+      .addCase(updform.rejected, (state, action) => {
+        state.load = false
       })
   }
 })
@@ -72,6 +88,15 @@ export const addform = createAsyncThunk(
   async (thunkAPI) => {
     const data = await axios.post("https://64ccec742eafdcdc851a7719.mockapi.io/users", thunkAPI)
     return data.data
+
+  }
+)
+export const updform = createAsyncThunk(
+  'form/upd',
+  async (thunkAPI) => {
+    console.log(thunkAPI)
+    const data = await axios.put(`https://64ccec742eafdcdc851a7719.mockapi.io/users/${thunkAPI.id}`, thunkAPI.data)
+    return thunkAPI
 
   }
 )
