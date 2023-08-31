@@ -25,11 +25,6 @@ function Sample() {
         Setdata(del)
     }
     console.log(obj)
-
-
-
-
-
     return (
         <>
             <Formik
@@ -75,11 +70,9 @@ function Sample() {
                     </Form>
                 )}
             </Formik >
-
             <table class="table">
                 <thead>
                     <tr>
-
                         <th scope="col">First</th>
                         <th scope="col">Last</th>
                         <th scope="col">email</th>

@@ -1,10 +1,12 @@
 import React from 'react'
-import "./Loader.css"
+import styles from "./Loader.module.css"
 
 function Loader() {
+
     return (
-        <div>
-            <div id="loader"></div>
+        <div className={styles.body}>
+            <div className={styles.loader}></div>
+
 
         </div>
     )

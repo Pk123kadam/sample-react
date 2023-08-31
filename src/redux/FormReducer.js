@@ -37,15 +37,10 @@ export const formSlice = createSlice({
 
     })
       .addCase(addform.pending, (state, action) => {
-
         state.load = true
-
-
       })
       .addCase(addform.rejected, (state, action) => {
         state.laod = false
-
-
       })
       .addCase(delform.pending, (state, action) => {
 
@@ -88,7 +83,6 @@ export const addform = createAsyncThunk(
   async (thunkAPI) => {
     const data = await axios.post("https://64ccec742eafdcdc851a7719.mockapi.io/users", thunkAPI)
     return data.data
-
   }
 )
 export const updform = createAsyncThunk(

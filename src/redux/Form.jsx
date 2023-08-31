@@ -12,6 +12,7 @@ function Formm() {
     const ref = useRef()
     const dispatch = useDispatch()
     const [bool, setbool] = useState(false)
+    // const [index, setindex] = useState(0)
     const [obj, setobj] = useState({})
     const [id, setid] = useState(0)
     const { form, load } = useSelector(state => state.form)
@@ -44,90 +45,102 @@ function Formm() {
         email: "",
         phone: ""
     }
-    console.log(modify)
-    console.log(Object.keys(obj).length)
-    // console.log(ref.current.innerText)
-
+    let country = [{ name: 'india', city: ['mumbai', 'pune'] }, { name: 'pak', city: ['karachi', 'dhaka'] }, { name: 'us', city: ['las vegas', 'chacago'] }]
     return (
-        <>
-            <div>
-                {load ? <Loader></Loader> : <div>
-                    <Formik
-                        initialValues={
-                            Object.keys(obj).length === 0 ? initial : modify
+
+        <div>
+            {/* <select onChange={(e) => setindex(e.target.value)}>
+                {
+                    country.map((e, i) => {
+                        return <option value={i}>{e.name}</option>
+                    })
+                }
+            </select>
+            <select>
+                {
+                    country[index].city.map((e, i) => {
+                        return <option>{e}</option>
+                    })
+                }
+            </select> */}
+            {load ? <Loader></Loader> : <div>
+                <Formik
+                    initialValues={
+                        Object.keys(obj).length === 0 ? initial : modify
+                    }
+                    validationSchema={SignupSchema}
+                    onSubmit={(values, action) => {
+                        // same shape as initial values
+                        console.log(values);
+
+                        if (ref.current.innerText == "Update") {
+                            console.log("hiii")
+                            dispatch(updform({ id: id, data: values }))
+                            setbool(!bool)
+                            setobj({})
+                        } else {
+                            dispatch(addform(values))
+
                         }
-                        validationSchema={SignupSchema}
-                        onSubmit={(values, action) => {
-                            // same shape as initial values
-                            console.log(values);
+                        action.resetForm()
 
-                            if (ref.current.innerText == "Update") {
-                                console.log("hiii")
-                                dispatch(updform({ id: id, data: values }))
-                                setbool(!bool)
-                                setobj({})
-                            } else {
-                                dispatch(addform(values))
+                    }}
+                >
+                    {({ errors, touched }) => (
+                        <Form>
+                            <label>Name</label>
+                            <Field name="name" />
 
-                            }
-                            action.resetForm()
+                            {errors.name && touched.name ? (
+                                <div>{errors.name}</div>
+                            ) : null}
+                            <label>Email</label>
+                            <Field name="email" type="email" />
+                            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                            <label>Phone</label>
+                            <Field name="phone" />
+                            {errors.phone && touched.phone ? (
+                                <div>{errors.phone}</div>
+                            ) : null}
+                            <button ref={ref} type="submit" className='btn btn-primary ms-2'>{bool ? "Update" : "Add"}</button>
+                        </Form>
+                    )}
+                </Formik>
+                <table class="table">
+                    <thead>
+                        <tr>
 
-                        }}
-                    >
-                        {({ errors, touched }) => (
-                            <Form>
-                                <label>Name</label>
-                                <Field name="name" />
-                                {errors.name && touched.name ? (
-                                    <div>{errors.name}</div>
-                                ) : null}
-                                <label>Email</label>
-                                <Field name="email" type="email" />
-                                {errors.email && touched.email ? <div>{errors.email}</div> : null}
-                                <label>Phone</label>
-                                <Field name="phone" />
-                                {errors.phone && touched.phone ? (
-                                    <div>{errors.phone}</div>
-                                ) : null}
-                                <button ref={ref} type="submit" className='btn btn-primary ms-2'>{bool ? "Update" : "Add"}</button>
-                            </Form>
-                        )}
-                    </Formik>
-                    <table class="table">
-                        <thead>
-                            <tr>
+                            <th scope="col">FirstName</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {form.map((item, index) => {
+                            return <>
+                                <tr key={index + 1}>
+                                    <td>{item.name}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.phone}</td>
+                                    <td><button className='btn btn-danger' onClick={() => handledel(item.id)} disabled={bool}>Delete</button></td>
+                                    <td><button disabled={bool} className="btn btn-primary" onClick={() => {
+                                        setbool(!bool)
+                                        setobj(item)
+                                        setid(item.id)
+                                    }}>Update</button></td>
+                                </tr>
 
-                                <th scope="col">FirstName</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {form.map((item, index) => {
-                                return <>
-                                    <tr key={index + 1}>
-                                        <td>{item.name}</td>
-                                        <td>{item.email}</td>
-                                        <td>{item.phone}</td>
-                                        <td><button className='btn btn-danger' onClick={() => handledel(item.id)} disabled={bool}>Delete</button></td>
-                                        <td><button disabled={bool} className="btn btn-primary" onClick={() => {
-                                            setbool(!bool)
-                                            setobj(item)
-                                            setid(item.id)
-                                        }}>Update</button></td>
-                                    </tr>
+                            </>
+                        })}
 
-                                </>
-                            })}
-
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
 
 
-                </div>}
-            </div>
-        </>
+            </div>}
+        </div>
+
     )
 }
 
