@@ -74,7 +74,6 @@ function Formm() {
                         console.log(values);
 
                         if (ref.current.innerText == "Update") {
-                            console.log("hiii")
                             dispatch(updform({ id: id, data: values }))
                             setbool(!bool)
                             setobj({})

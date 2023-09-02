@@ -47,18 +47,56 @@
       //   }
       // }
 
-      let name = "my name is rohan name is sadasd"
-      let arr = name.split("").filter((e)=> e!== " ")
-      let obj = {}
-      for(let i = 0;i<=arr.length;i++){
-        if(obj[arr[i]]){
-         obj[arr[i]] =  obj[arr[i]] + 1
-        }else{
-          obj[arr[i]] = 1
-        }
+      // let name = "my name is rohan name is sadasd"
+      // let arr = name.split("").filter((e)=> e!== " ")
+      // let obj = {}
+      // for(let i = 0;i<=arr.length;i++){
+      //   if(obj[arr[i]]){
+      //    obj[arr[i]] =  obj[arr[i]] + 1
+      //   }else{
+      //     obj[arr[i]] = 1
+      //   }
 
+      // }
+  function debounce(func, delay) {
+  let timeoutId;
+  return function (...args) {
+    const context = this;
+    
+    clearTimeout(timeoutId);
+    
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
+}
+      const arr = [12, 2, 4, 3, 2, 8, 7]
+      const n = 1
+      let nArr = Array.from({length: n}, (_, i) => i===0?arr[0]:0)
+      for(let i=1; i<arr.length; i++){
+        for(let j in nArr){
+          if(arr[i] > nArr[j]){
+            if(j === n-1) nArr[j] = arr[i]
+            else{
+              nArr.splice(j,0,arr[i]) 
+              nArr = nArr.slice(0, -1)
+            }
+            break
+          }
+        }
       }
-      console.log(obj)
+        console.log(nArr[n-1])
+//         function search(query) {
+//   console.log(`Searching for: ${query}`);
+// }
+
+// Create a debounced version of the search function
+const debouncedSearch = debounce(search, 300); // 300 milliseconds delay
+
+// Call the debounced function when needed, e.g., in response to user input
+debouncedSearch("apple");
+debouncedSearch("banana");
+debouncedSearch("cherry");
    
       
     </script>
