@@ -43,6 +43,7 @@ import Form from "./redux/Form";
 import Formm from "./redux/Form";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import Layout from "./Layout";
 
 
 
@@ -144,6 +145,7 @@ function App() {
       <Hover></Hover> */}
       {/* <Pagination></Pagination> */}
       <Provider store={store}><Formm></Formm></Provider>
+      {/* <Layout></Layout> */}
     </>
   );
 }

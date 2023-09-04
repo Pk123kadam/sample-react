@@ -73,7 +73,7 @@ function Formm() {
                         // same shape as initial values
                         console.log(values);
 
-                        if (ref.current.innerText == "Update") {
+                        if (Object.keys(obj).length) {
                             dispatch(updform({ id: id, data: values }))
                             setbool(!bool)
                             setobj({})
