@@ -44,6 +44,7 @@ import Formm from "./redux/Form";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Layout from "./Layout";
+import Debounce from "./Debounce/Debounce";
 
 
 
@@ -144,8 +145,9 @@ function App() {
       {/* <Click></Click>
       <Hover></Hover> */}
       {/* <Pagination></Pagination> */}
-      <Provider store={store}><Formm></Formm></Provider>
+      {/* <Provider store={store}><Formm></Formm></Provider> */}
       {/* <Layout></Layout> */}
+      <Debounce></Debounce>
     </>
   );
 }
