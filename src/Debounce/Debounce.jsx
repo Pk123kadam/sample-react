@@ -17,7 +17,6 @@ function Debounce() {
     }
     useEffect(() => {
         let timeout = setTimeout(() => {
-            console.log(value)
             let newarr = [...data]
             let filtered = newarr.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
             setFil(filtered)

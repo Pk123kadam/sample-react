@@ -45,6 +45,9 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Layout from "./Layout";
 import Debounce from "./Debounce/Debounce";
+import { Provide } from "./usereducer & context/Provide";
+import Data from "./usereducer & context/Data";
+
 
 
 
@@ -56,6 +59,7 @@ function App() {
   const Home = React.lazy(() => import("./login form/Home"))
   const Login = React.lazy(() => import("./login form/Login"))
   const Dash = React.lazy(() => import("./login form/Dashboard"))
+
 
 
 
@@ -147,7 +151,12 @@ function App() {
       {/* <Pagination></Pagination> */}
       {/* <Provider store={store}><Formm></Formm></Provider> */}
       {/* <Layout></Layout> */}
-      <Debounce></Debounce>
+      {/* <Debounce></Debounce> */}
+      {/* <Provide>
+        <Data parent={parent}></Data>
+      </Provide> */}
+      <Parent></Parent>
+
     </>
   );
 }

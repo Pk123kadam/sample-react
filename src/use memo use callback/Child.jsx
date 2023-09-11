@@ -1,14 +1,21 @@
 import React, { memo, useEffect } from 'react'
 
-function Child({ todos, addTodo }) {
+function Child({ todos, addTodo, data, setData }) {
     console.log("child render");
     return (
         <>
-            <h2>My Todos</h2>
+            {/* <h2>My Todos</h2>
             {todos.map((todo, index) => {
                 return <p key={index}>{todo}</p>;
             })}
-            <button onClick={addTodo}>Add Todo</button>
+            <button onClick={addTodo}>Add Todo</button> */}
+            <button onClick={() => setData({ ...data, name: "prathamesh kadam" })}>name</button>
+            <button onClick={() => setData({
+                ...data, stack: { ...data.stack, frontend: [...data.stack.frontend, "html"] }
+            })}>stack</button>
+            <button onClick={() => setData({ ...data, company: { ...data.company, name: { ...data.company.name, company4: "company4" } } })}>company</button>
+
+
         </>
     );
 }
