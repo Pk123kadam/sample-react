@@ -10,13 +10,11 @@ function Display({ list, del }) {
         del(fil)
 
     }
-
     return (
         <div className='container'>
             <table class="table">
                 <thead>
                     <tr>
-
                         <th scope="col">FirstName</th>
                         <th scope="col">LastName</th>
                         <th scope="col">Email</th>
@@ -30,7 +28,6 @@ function Display({ list, del }) {
                                 <td>{item.firstName}</td>
                                 <td>{item.lastName}</td>
                                 <td>{item.email}</td>
-
                                 <td><button className='btn btn-danger' onClick={() => handledel(index)}>Delete</button></td>
 
 

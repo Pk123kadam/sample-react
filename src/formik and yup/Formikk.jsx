@@ -95,7 +95,6 @@ function Formikk() {
                             {errors.email && touched.email ? <div className='text-danger'>{errors.email}</div> : null}
 
                         </div>
-
                         <div className='text-center'>
                             <button type="submit" className="btn btn-primary">ADD</button>
 
