@@ -36,15 +36,17 @@ import Privateroute from "./Route/Privateroute";
 import Example from "./Route/Example";
 import Loginn from "./Route/Login";
 import Sample from "./Form/Sample";
-import Click from "./hoc/Click";
-import Hover from "./hoc/Hover";
-import Pagination from "./Pagination/Pagination";
-import Form from "./redux/Form";
-import Formm from "./redux/Form";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
-import Layout from "./Layout";
-import Debounce from "./Debounce/Debounce";
+// import Click from "./hoc/Click";
+// import Hover from "./hoc/Hover";
+// import Pagination from "./Pagination/Pagination";
+// import Form from "./redux/Form";
+// import Formm from "./redux/Form";
+// import { Provider } from "react-redux";
+// import { store } from "./redux/store";
+// import Layout from "./Layout";
+// import Debounce from "./Debounce/Debounce";
+import { Context } from "./use context and usereducer/Context";
+import Data from "./use context and usereducer/Data";
 
 
 
@@ -147,7 +149,11 @@ function App() {
       {/* <Pagination></Pagination> */}
       {/* <Provider store={store}><Formm></Formm></Provider> */}
       {/* <Layout></Layout> */}
-      <Debounce></Debounce>
+      {/* <Debounce></Debounce> */}
+      {/* <Context>
+        <Data></Data>
+      </Context> */}
+      <Useform></Useform>
     </>
   );
 }
