@@ -7,6 +7,17 @@ function Parent() {
     const [data, setData] = useState({
         name: "prathamesh",
         stack: {
+<<<<<<< HEAD
+            frontend: ["react js", "angular"],
+            backend: ["java", "node"]
+        },
+        company: [
+            { company1: "nimap1" },
+            { company2: "nimap2" },
+            { company3: "nimap3" },
+        ]
+
+=======
             frontend: ["react", "html", "css"],
             backend: ["node", "java"]
         },
@@ -17,6 +28,7 @@ function Parent() {
                 company3: "nimap3"
             }
         }
+>>>>>>> 0ae1d8f6893a440167520be0a2604c628aed0366
     })
     console.log(data)
 
@@ -30,6 +42,9 @@ function Parent() {
 
     return (
         <>
+<<<<<<< HEAD
+
+=======
             name:{data.name}<br></br>
             frontend: {
                 data.stack.frontend.map((e) => e + " ")
@@ -39,11 +54,27 @@ function Parent() {
             {data.company.name.company3}<br></br>
             {data.company.name?.company4}
             <Child todos={todos} addTodo={addTodo} data={data} setData={setData} />
+>>>>>>> 0ae1d8f6893a440167520be0a2604c628aed0366
             {/* <hr />
             <div>
                 Count: {count}
                 <button onClick={increment}>+</button>
             </div> */}
+<<<<<<< HEAD
+            name : {data.name}<br></br>
+            frontend: {
+                data.stack.frontend.map((e) => e + " ")
+            }<br></br>
+            backend: {
+                data.stack.backend.map((e) => e + " ")
+            }
+            {/* company:{
+                data.company
+            } */}<br></br>
+
+            <Child todos={todos} addTodo={addTodo} data={data} setData={setData} />
+=======
+>>>>>>> 0ae1d8f6893a440167520be0a2604c628aed0366
         </>
     );
 }

@@ -46,13 +46,7 @@ import { store } from "./redux/store";
 import Layout from "./Layout";
 import Debounce from "./Debounce/Debounce";
 import { Provide } from "./usereducer & context/Provide";
-// import Data from "./usereducer & context/Data";
-import NormalComponent from "./pure components/NormalComponent";
-import Purecomponent from "./pure components/PureComponent";
-import { Query } from "./usequery/Query";
-import { Bar } from "react-chartjs-2";
-import LineChart from "./chart/Chart"
-
+import Data from "./usereducer & context/Data";
 
 
 
@@ -176,37 +170,8 @@ function App() {
       {/* <Provide>
         <Data parent={parent}></Data>
       </Provide> */}
-      {/* <Parent></Parent> */}
-      {/* <NormalComponent></NormalComponent>
-      <Purecomponent></Purecomponent> */}
-      {/* <Query /> */}
-      {/* <LineChart /> */}
-      <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
-        <div style={{ border: "1px solid", padding: "10px", width: "200px", height: "200px" }}>
-          <ul>
-            {
-              right?.map((e, i) => {
-                return <li><input type="checkbox" name={e} onClick={(e) => handleRight(e, i)} />{e}</li>
-              })
-            }
-          </ul>
-        </div>
-        <div>
-          <button onClick={() => setRightVisible(true)}>{"->"}</button><br></br>
-          <button onClick={() => setLeftVisible(true)}>{"<-"}</button>
-        </div>
-        <div style={{ border: "1px solid", padding: "10px", width: "200px", height: "200px" }}>
-          <ul>
-            {
-              left?.map((e) => {
-                return <li><input type="checkbox" name={e} onClick={handleLeft} />{e}</li>
-              })
-            }
-          </ul>
+      <Parent></Parent>
 
-        </div>
-
-      </div>
     </>
   );
 }
