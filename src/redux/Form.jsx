@@ -108,7 +108,6 @@ function Formm() {
                 <table class="table">
                     <thead>
                         <tr>
-
                             <th scope="col">FirstName</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone</th>

@@ -23,9 +23,6 @@ function Clean() {
         <div>
 
             <button onClick={() => setcount(count++)}>count{count}</button>
-
-
-
         </div>
     )
 }

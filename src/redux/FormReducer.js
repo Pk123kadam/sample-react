@@ -25,16 +25,12 @@ export const formSlice = createSlice({
     }).addCase(getform.fulfilled, (state, action) => {
       state.form = action.payload
       state.load = false
-
-
     }).addCase(updform.fulfilled, (state, action) => {
       let obj = state.form.find((e) => e.id == action.payload.id)
       obj.name = action.payload.data.name,
         obj.email = action.payload.data.email,
         obj.phone = action.payload.data.phone
       state.load = false
-
-
     })
       .addCase(addform.pending, (state, action) => {
         state.load = true
@@ -45,7 +41,6 @@ export const formSlice = createSlice({
       .addCase(delform.pending, (state, action) => {
 
         state.load = true
-
 
       })
       .addCase(delform.rejected, (state, action) => {

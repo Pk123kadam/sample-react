@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { PureComponent } from "react";
 import Stopwatch from "./Stopwatch/Stopwatch";
 import Counter from "./counter/Counter";
 import Event from "./events/Events";
@@ -46,7 +46,13 @@ import { store } from "./redux/store";
 import Layout from "./Layout";
 import Debounce from "./Debounce/Debounce";
 import { Provide } from "./usereducer & context/Provide";
-import Data from "./usereducer & context/Data";
+// import Data from "./usereducer & context/Data";
+import NormalComponent from "./pure components/NormalComponent";
+import Purecomponent from "./pure components/PureComponent";
+import { Query } from "./usequery/Query";
+import { Bar } from "react-chartjs-2";
+import LineChart from "./chart/Chart"
+
 
 
 
@@ -54,14 +60,29 @@ import Data from "./usereducer & context/Data";
 
 function App() {
   const [state, setstate] = useState(false)
+  const [right, setRight] = useState(["Task1", "Task2", "Task3"])
+  const [left, setLeft] = useState(["Task4", "Task5", "Task6"])
+  const [rightVisible, setRightVisible] = useState(false)
+  const [leftVisible, setLeftVisible] = useState(false)
+
+
+
 
   // const Lazycomponent = React.lazy(() => import("./lazy loader/Lazy"))
   const Home = React.lazy(() => import("./login form/Home"))
   const Login = React.lazy(() => import("./login form/Login"))
   const Dash = React.lazy(() => import("./login form/Dashboard"))
-
-
-
+  function handleRight(e, i) {
+    if (e.target.checked) {
+      right.splice(i, 1)
+      setRightVisible([...right])
+    }
+  }
+  function handleLeft(e) {
+    if (e.target.checked) {
+      setLeft([...left, e.target.name])
+    }
+  }
 
   return (
     <>
@@ -155,8 +176,37 @@ function App() {
       {/* <Provide>
         <Data parent={parent}></Data>
       </Provide> */}
-      <Parent></Parent>
+      {/* <Parent></Parent> */}
+      {/* <NormalComponent></NormalComponent>
+      <Purecomponent></Purecomponent> */}
+      {/* <Query /> */}
+      {/* <LineChart /> */}
+      <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+        <div style={{ border: "1px solid", padding: "10px", width: "200px", height: "200px" }}>
+          <ul>
+            {
+              right?.map((e, i) => {
+                return <li><input type="checkbox" name={e} onClick={(e) => handleRight(e, i)} />{e}</li>
+              })
+            }
+          </ul>
+        </div>
+        <div>
+          <button onClick={() => setRightVisible(true)}>{"->"}</button><br></br>
+          <button onClick={() => setLeftVisible(true)}>{"<-"}</button>
+        </div>
+        <div style={{ border: "1px solid", padding: "10px", width: "200px", height: "200px" }}>
+          <ul>
+            {
+              left?.map((e) => {
+                return <li><input type="checkbox" name={e} onClick={handleLeft} />{e}</li>
+              })
+            }
+          </ul>
 
+        </div>
+
+      </div>
     </>
   );
 }

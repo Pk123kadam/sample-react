@@ -27,7 +27,6 @@ export function Provide({ children }) {
         <context.Provider value={{ state, dispatch }}>
             {children}
         </context.Provider>
-
     )
 }
 
