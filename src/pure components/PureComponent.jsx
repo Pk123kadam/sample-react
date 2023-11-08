@@ -33,9 +33,6 @@ function Purecomponent() {
         <div>PureComponent
             {state}
             <button onClick={() => setState(0)}>increment</button>
-
-
-
         </div>
     )
 }

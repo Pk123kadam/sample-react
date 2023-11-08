@@ -47,6 +47,7 @@ import Layout from "./Layout";
 import Debounce from "./Debounce/Debounce";
 import { Provide } from "./usereducer & context/Provide";
 import Data from "./usereducer & context/Data";
+import Chart from "./chart/Chart"
 
 
 
@@ -77,7 +78,6 @@ function App() {
       setLeft([...left, e.target.name])
     }
   }
-
   return (
     <>
       {/* <Counter></Counter> */}
@@ -155,7 +155,6 @@ function App() {
 
             </Privateroute>
           }>
-
           </Route>
           <Route path="/login" element={<Loginn ></Loginn>}></Route>
         </Routes>
@@ -170,8 +169,8 @@ function App() {
       {/* <Provide>
         <Data parent={parent}></Data>
       </Provide> */}
-      <Parent></Parent>
-
+      {/* <Parent></Parent> */}
+      {/* <Chart /> */}
     </>
   );
 }
