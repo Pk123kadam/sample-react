@@ -48,21 +48,16 @@ import Debounce from "./Debounce/Debounce";
 import { Provide } from "./usereducer & context/Provide";
 import Data from "./usereducer & context/Data";
 import Chart from "./chart/Chart"
-
-
-
-
-
+import useSound from "use-sound";
+import boopSfx from '../src/assets/sample.mp3';
+import Demo from "./usesound/Demo";
 function App() {
+  const [play] = useSound(boopSfx);
   const [state, setstate] = useState(false)
   const [right, setRight] = useState(["Task1", "Task2", "Task3"])
   const [left, setLeft] = useState(["Task4", "Task5", "Task6"])
   const [rightVisible, setRightVisible] = useState(false)
   const [leftVisible, setLeftVisible] = useState(false)
-
-
-
-
   // const Lazycomponent = React.lazy(() => import("./lazy loader/Lazy"))
   const Home = React.lazy(() => import("./login form/Home"))
   const Login = React.lazy(() => import("./login form/Login"))
@@ -80,6 +75,7 @@ function App() {
   }
   return (
     <>
+      <Demo />
       {/* <Counter></Counter> */}
 
       {/* <Stopwatch></Stopwatch> */}
@@ -106,7 +102,7 @@ function App() {
      <Routes>
      <Route path="/" element={<Crud></Crud>}/>
       <Route path="/add" element={<Add></Add>}/>
-      <Route path="/update/:id" element={<Update></Update>}/>
+      <Route path="/update/:id" element={<Upd ate></Upd>}/>
 
     </Routes></BrowserRouter>
    

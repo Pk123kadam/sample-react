@@ -63,80 +63,84 @@ function Formm() {
                     })
                 }
             </select> */}
-            {load ? <Loader></Loader> : <div>
-                <Formik
-                    initialValues={
-                        Object.keys(obj).length === 0 ? initial : modify
-                    }
-                    validationSchema={SignupSchema}
-                    onSubmit={(values, action) => {
-                        // same shape as initial values
-                        console.log(values);
-
-                        if (Object.keys(obj).length) {
-                            dispatch(updform({ id: id, data: values }))
-                            setbool(!bool)
-                            setobj({})
-                        } else {
-                            dispatch(addform(values))
-
+            {load
+                ?
+                <Loader></Loader>
+                :
+                <div>
+                    <Formik
+                        initialValues={
+                            Object.keys(obj).length === 0 ? initial : modify
                         }
-                        action.resetForm()
+                        validationSchema={SignupSchema}
+                        onSubmit={(values, action) => {
+                            // same shape as initial values
+                            console.log(values);
 
-                    }}
-                >
-                    {({ errors, touched }) => (
-                        <Form>
-                            <label>Name</label>
-                            <Field name="name" />
+                            if (Object.keys(obj).length) {
+                                dispatch(updform({ id: id, data: values }))
+                                setbool(!bool)
+                                setobj({})
+                            } else {
+                                dispatch(addform(values))
 
-                            {errors.name && touched.name ? (
-                                <div>{errors.name}</div>
-                            ) : null}
-                            <label>Email</label>
-                            <Field name="email" type="email" />
-                            {errors.email && touched.email ? <div>{errors.email}</div> : null}
-                            <label>Phone</label>
-                            <Field name="phone" />
-                            {errors.phone && touched.phone ? (
-                                <div>{errors.phone}</div>
-                            ) : null}
-                            <button ref={ref} type="submit" className='btn btn-primary ms-2'>{bool ? "Update" : "Add"}</button>
-                        </Form>
-                    )}
-                </Formik>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">FirstName</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {form.map((item, index) => {
-                            return <>
-                                <tr key={index + 1}>
-                                    <td>{item.name}</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.phone}</td>
-                                    <td><button className='btn btn-danger' onClick={() => handledel(item.id)} disabled={bool}>Delete</button></td>
-                                    <td><button disabled={bool} className="btn btn-primary" onClick={() => {
-                                        setbool(!bool)
-                                        setobj(item)
-                                        setid(item.id)
-                                    }}>Update</button></td>
-                                </tr>
+                            }
+                            action.resetForm()
 
-                            </>
-                        })}
+                        }}
+                    >
+                        {({ errors, touched }) => (
+                            <Form>
+                                <label>Name</label>
+                                <Field name="name" />
 
-                    </tbody>
-                </table>
+                                {errors.name && touched.name ? (
+                                    <div>{errors.name}</div>
+                                ) : null}
+                                <label>Email</label>
+                                <Field name="email" type="email" />
+                                {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                                <label>Phone</label>
+                                <Field name="phone" />
+                                {errors.phone && touched.phone ? (
+                                    <div>{errors.phone}</div>
+                                ) : null}
+                                <button ref={ref} type="submit" className='btn btn-primary ms-2'>{bool ? "Update" : "Add"}</button>
+                            </Form>
+                        )}
+                    </Formik>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">FirstName</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {form.map((item, index) => {
+                                return <>
+                                    <tr key={index + 1}>
+                                        <td>{item.name}</td>
+                                        <td>{item.email}</td>
+                                        <td>{item.phone}</td>
+                                        <td><button className='btn btn-danger' onClick={() => handledel(item.id)} disabled={bool}>Delete</button></td>
+                                        <td><button disabled={bool} className="btn btn-primary" onClick={() => {
+                                            setbool(!bool)
+                                            setobj(item)
+                                            setid(item.id)
+                                        }}>Update</button></td>
+                                    </tr>
+
+                                </>
+                            })}
+
+                        </tbody>
+                    </table>
 
 
-            </div>}
+                </div>}
         </div>
 
     )

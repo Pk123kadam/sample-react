@@ -20,8 +20,6 @@ export const formSlice = createSlice({
     }).addCase(delform.fulfilled, (state, action) => {
       state.form = state.form.filter((e, i) => e.id != action.payload)
       state.load = false
-
-
     }).addCase(getform.fulfilled, (state, action) => {
       state.form = action.payload
       state.load = false
@@ -39,26 +37,18 @@ export const formSlice = createSlice({
         state.laod = false
       })
       .addCase(delform.pending, (state, action) => {
-
         state.load = true
-
       })
       .addCase(delform.rejected, (state, action) => {
         state.laod = false
       })
       .addCase(getform.pending, (state, action) => {
-
         state.load = true
-
-
       })
       .addCase(getform.rejected, (state, action) => {
         state.load = false
       }).addCase(updform.pending, (state, action) => {
-
         state.load = true
-
-
       })
       .addCase(updform.rejected, (state, action) => {
         state.load = false
