@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { PureComponent } from "react";
+import React, { PureComponent, useEffect } from "react";
 import Stopwatch from "./Stopwatch/Stopwatch";
 import Counter from "./counter/Counter";
 import Event from "./events/Events";
@@ -11,6 +11,7 @@ import Protected from "./login form/Protected";
 import Navbar from "./login form/Navbar";
 
 import { Suspense, useState } from "react";
+import axios from "axios";
 
 import Crud from "./Crud/Crud";
 import Add from "./Crud/Add";
@@ -51,6 +52,7 @@ import Chart from "./chart/Chart"
 import useSound from "use-sound";
 import boopSfx from '../src/assets/sample.mp3';
 import Demo from "./usesound/Demo";
+import { Video } from "./video/Video";
 function App() {
   const [play] = useSound(boopSfx);
   const [state, setstate] = useState(false)
@@ -58,6 +60,7 @@ function App() {
   const [left, setLeft] = useState(["Task4", "Task5", "Task6"])
   const [rightVisible, setRightVisible] = useState(false)
   const [leftVisible, setLeftVisible] = useState(false)
+  const [counter, setCounter] = useState(0)
   // const Lazycomponent = React.lazy(() => import("./lazy loader/Lazy"))
   const Home = React.lazy(() => import("./login form/Home"))
   const Login = React.lazy(() => import("./login form/Login"))
@@ -73,9 +76,17 @@ function App() {
       setLeft([...left, e.target.name])
     }
   }
+  useEffect(() => {
+    async function get() {
+      let data = axios.get("https://64ccec742eafdcdc851a7719.mockapi.io/users")
+      return data
+
+    }
+    get().then((data) => { console.log(data) })
+  }, [])
   return (
     <>
-      <Demo />
+      {/* <Demo /> */}
       {/* <Counter></Counter> */}
 
       {/* <Stopwatch></Stopwatch> */}
@@ -167,6 +178,7 @@ function App() {
       </Provide> */}
       {/* <Parent></Parent> */}
       {/* <Chart /> */}
+      <Video />
     </>
   );
 }

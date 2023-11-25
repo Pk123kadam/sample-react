@@ -26,11 +26,9 @@ function Formm() {
         phone: Yup.string()
             .min(10, 'Too Short!')
             .max(10, 'Too Long!')
-
     });
     function handledel(id) {
         dispatch(delform(id))
-
     }
     useEffect(() => {
         dispatch(getform())
@@ -47,7 +45,6 @@ function Formm() {
     }
     let country = [{ name: 'india', city: ['mumbai', 'pune'] }, { name: 'pak', city: ['karachi', 'dhaka'] }, { name: 'us', city: ['las vegas', 'chacago'] }]
     return (
-
         <div>
             {/* <select onChange={(e) => setindex(e.target.value)}>
                 {
@@ -86,7 +83,6 @@ function Formm() {
 
                             }
                             action.resetForm()
-
                         }}
                     >
                         {({ errors, touched }) => (

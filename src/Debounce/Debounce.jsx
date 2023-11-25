@@ -25,8 +25,6 @@ function Debounce() {
             clearTimeout(timeout)
         }
     }, [value])
-
-
     return (
         <div>
             <input type='text' placeholder='search names' onChange={(e) => handleChange(e)}></input>

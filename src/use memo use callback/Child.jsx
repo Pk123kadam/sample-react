@@ -15,7 +15,6 @@ function Child({ todos, addTodo, data, setData }) {
             })}>stack</button>
             <button onClick={() => setData({
                 ...data, company: [...data.company, { company4: "nimap4" }]
-
             })}>company</button>
 
         </>
